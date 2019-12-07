@@ -73,8 +73,19 @@ namespace QualityTest
             Email = Console.ReadLine();
             Console.WriteLine("input Phone: ");
             Phone = Console.ReadLine();
-            Status = StudentStatus.Active;
+                        Console.WriteLine("input Status (1 is Active; 0 is Deactive: ");
+            int check = int.Parse(Console.ReadLine());
+            if (check == 1)
+            {
+                Status = StudentStatus.Active;
+            }
+            if(check ==0)
+            {
+                Status = StudentStatus.Deactive;
+
+            }
             students.Add(controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, Status));
+        
         }
         private void show()
         {

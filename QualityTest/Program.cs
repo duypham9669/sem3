@@ -67,11 +67,11 @@ namespace QualityTest
             Console.WriteLine("input CreatedAt: ");
             CreatedAt = DateTime.Parse(Console.ReadLine());
             Status = StudentStatus.Active;
-            controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status);
+      students.Add(controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status));
         }
         private void show()
         {
-
+            controller.PrintListStudent(students);
         }
     }
 }

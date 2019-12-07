@@ -1,4 +1,4 @@
-﻿using QualityTest.Models;
+using QualityTest.Models;
 using System;
 using System.Collections.Generic;
 using QualityTest.Controller;
@@ -21,16 +21,19 @@ namespace QualityTest
         private StudentStatus Status;
         private List<Student> students;
         private StudentController controller;
+
         private 
         static void Main(string[] args)
         {
-          
+            Program mainX = new Program();
+            mainX.GenerateMenu();
+            Console.ReadLine();
         }
-        public void GenerateMenu()
-        {
+        private void GenerateMenu(){
             menu();
-            int i = 0;
-            while (i < 2)
+            int i = int.Parse(Console.ReadLine());
+            Boolean value=true;
+            while (value)
             {
                 switch (i)
                 {
@@ -38,15 +41,19 @@ namespace QualityTest
                         input();
                         break;
                     case 2:
-                        show()
+                        show();
+                        break;
+                    case 3:
                         break;
                 }
+
 
             }
             
         }
         private void menu()
         {
+            Console.Clear();
             Console.WriteLine("MENU");
             Console.WriteLine("1.Create new Student");
             Console.WriteLine("2.Show list Student");
@@ -54,6 +61,8 @@ namespace QualityTest
         }
         private void input()
         {
+            Console.WriteLine("input New Student: ");
+
             Console.WriteLine("input RollNumber: ");
             RollNumber = Console.ReadLine();
             Console.WriteLine("input FullName: ");
@@ -64,14 +73,13 @@ namespace QualityTest
             Email = Console.ReadLine();
             Console.WriteLine("input Phone: ");
             Phone = Console.ReadLine();
-            Console.WriteLine("input CreatedAt: ");
-            CreatedAt = DateTime.Parse(Console.ReadLine());
             Status = StudentStatus.Active;
-      students.Add(controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status));
+            students.Add(controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, Status));
         }
         private void show()
         {
             controller.PrintListStudent(students);
         }
+
     }
 }

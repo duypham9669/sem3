@@ -20,7 +20,21 @@ namespace QualityTest.Models
         public String Phone { get; set; }
         public DateTime CreatedAt { get; set; }
         public StudentStatus Status { get; set; }
-       
+        public Student(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, DateTime CreatedAt, int Status)
+        {
+            this.RollNumber = RollNumber;
+            this.FullName = FullName;
+            this.Birthday = Birthday;
+            this.Email = Email;
+            this.Phone = Phone;
+            this.CreatedAt = CreatedAt;
+            this.Status = Status;
+
+        }
+
+        public Student()
+        {
+        }
         public Boolean IsNewStudent(DateTime dateStudent)
         {
             return (((dateStudent - DateTime.Now).TotalDays) > 60) ? true : false ;

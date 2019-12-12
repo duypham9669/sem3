@@ -18,24 +18,26 @@ namespace QualityTest
         private String Email;
         private String Phone;
         private DateTime CreatedAt;
-        private StudentStatus Status;
-        private List<Student> students;
-        private StudentController controller;
+        private int Status;
+        private List<Student> students=new List<Student>();
+        private StudentController controller = new StudentController();
 
-        private 
+        private
         static void Main(string[] args)
         {
+
             Program mainX = new Program();
             mainX.GenerateMenu();
             Console.ReadLine();
         }
-        private void GenerateMenu(){
-            menu();
-            int i = int.Parse(Console.ReadLine());
-            Boolean value=true;
-            while (value)
+        private void GenerateMenu()
+        {
+            Boolean chose = true;
+            do
             {
-                switch (i)
+                menu();
+                int chon = int.Parse(Console.ReadLine());
+                switch (chon)
                 {
                     case 1:
                         input();
@@ -43,14 +45,17 @@ namespace QualityTest
                     case 2:
                         show();
                         break;
-                    case 3:
+                    default:
+                        Console.WriteLine("MENU");
+                        Console.ReadLine();
+                        chose = false;
                         break;
                 }
+            } while (chose);
 
-
-            }
-            
         }
+
+
         private void menu()
         {
             Console.Clear();
@@ -62,7 +67,6 @@ namespace QualityTest
         private void input()
         {
             Console.WriteLine("input New Student: ");
-
             Console.WriteLine("input RollNumber: ");
             RollNumber = Console.ReadLine();
             Console.WriteLine("input FullName: ");
@@ -73,23 +77,26 @@ namespace QualityTest
             Email = Console.ReadLine();
             Console.WriteLine("input Phone: ");
             Phone = Console.ReadLine();
-                        Console.WriteLine("input Status (1 is Active; 0 is Deactive: ");
-            int check = int.Parse(Console.ReadLine());
-            if (check == 1)
+            Console.WriteLine("input Status (1 is Active; 0 is Deactive: )");
+            Status = Convert.ToInt32(Console.ReadLine());
+            while (Status > 1 && Status < 0)
             {
-                Status = StudentStatus.Active;
-            }
-            if(check ==0)
-            {
-                Status = StudentStatus.Deactive;
-
-            }
-            students.Add(controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, Status));
-        
+               
+                    Console.WriteLine("input Status (1 is Active; 0 is Deactive: ");
+                Status = int.Parse(Console.ReadLine());
+          
+            };
+            CreatedAt = DateTime.Now;
+            
+            Student student = new Student();
+            student=controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status);
+            students.Add(student);
         }
         private void show()
         {
+            
             controller.PrintListStudent(students);
+            Console.ReadLine();
         }
 
     }

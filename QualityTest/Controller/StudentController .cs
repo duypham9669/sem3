@@ -12,29 +12,24 @@ namespace QualityTest.Controller
     {
         public void PrintListStudent(List<Student> students)
         {
+            int ii = 1;
             foreach (Student i in students)
             {
-                if (i.Status.Equals("Active"))
+                if (i.Status == 1)
                 {
+                    Console.WriteLine("Stt: " + ii);
                     Console.WriteLine(i.FullName);
-
+                    Console.WriteLine("-------------------");
+                    ii++;
                 }
             }
         }
-        public Student CreateStudent(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, DateTime CreatedAt, StudentStatus Status)
+        public Student CreateStudent(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, DateTime CreatedAt, int Status)
         {
-
-
-            Student student = new Student();
-            student.RollNumber = RollNumber;
-            student.FullName = FullName;
-            student.Birthday = Birthday;
-            student.Email = Email;
-            student.Phone = Phone;
-            student.Status = Status;
+            Student student = new Student(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status);
             return student;
-
         }
     }
 }
+
  

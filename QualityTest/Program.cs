@@ -19,13 +19,12 @@ namespace QualityTest
         private String Phone;
         private DateTime CreatedAt;
         private int Status;
-        private List<Student> students=new List<Student>();
-        private StudentController controller = new StudentController();
+        private List<Student> students= new List<Student>();
+        private StudentController controller=new StudentController();
 
         private
         static void Main(string[] args)
         {
-
             Program mainX = new Program();
             mainX.GenerateMenu();
             Console.ReadLine();
@@ -45,6 +44,7 @@ namespace QualityTest
                     case 2:
                         show();
                         break;
+
                     default:
                         Console.WriteLine("MENU");
                         Console.ReadLine();
@@ -77,24 +77,21 @@ namespace QualityTest
             Email = Console.ReadLine();
             Console.WriteLine("input Phone: ");
             Phone = Console.ReadLine();
-            Console.WriteLine("input Status (1 is Active; 0 is Deactive: )");
-            Status = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("input Status (1 is Active; 0 is Deactive: ");
+            Status = int.Parse(Console.ReadLine());
             while (Status > 1 && Status < 0)
             {
                
                     Console.WriteLine("input Status (1 is Active; 0 is Deactive: ");
                 Status = int.Parse(Console.ReadLine());
-          
+                
             };
-            CreatedAt = DateTime.Now;
-            
             Student student = new Student();
-            student=controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status);
+            student = controller.CreateStudent(RollNumber, FullName, Birthday, Email, Phone, Status);
             students.Add(student);
         }
         private void show()
         {
-            
             controller.PrintListStudent(students);
             Console.ReadLine();
         }

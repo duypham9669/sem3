@@ -24,12 +24,11 @@ namespace QualityTest.Controller
                 }
             }
         }
-        public Student CreateStudent(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, DateTime CreatedAt, int Status)
+        public Student CreateStudent(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, int Status)
         {
+            DateTime CreatedAt = DateTime.Now;
             Student student = new Student(RollNumber, FullName, Birthday, Email, Phone, CreatedAt, Status);
             return student;
         }
     }
 }
-
- 

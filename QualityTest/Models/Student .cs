@@ -8,18 +8,14 @@ namespace QualityTest.Models
 {
     class Student
     {
-        public enum StudentStatus
-        {
-            Active,
-            Deactive
-        };
+       
         public String RollNumber { get; set; }
         public String FullName { get; set; }
         public DateTime Birthday { get; set; }
         public String Email { get; set; }
         public String Phone { get; set; }
         public DateTime CreatedAt { get; set; }
-        public StudentStatus Status { get; set; }
+        public int Status { get; set; }
         public Student(String RollNumber, String FullName, DateTime Birthday, String Email, String Phone, DateTime CreatedAt, int Status)
         {
             this.RollNumber = RollNumber;
@@ -37,7 +33,7 @@ namespace QualityTest.Models
         }
         public Boolean IsNewStudent(DateTime dateStudent)
         {
-            return (((dateStudent - DateTime.Now).TotalDays) > 60) ? true : false ;
+            return (((dateStudent - DateTime.Now).TotalDays) > 60) ? true : false;
         }
 
         public Boolean IsDeactive(String studentStudent)
